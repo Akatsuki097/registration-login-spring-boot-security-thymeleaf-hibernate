@@ -51,6 +51,51 @@
                                        type="date"/>
 
                             </div>
+<!--                            select maximum 5 user to the projects  as  userName and no duplicate -->
+                            <div>
+                                <label for="user">Select User</label>
+
+                                <select class="form-control" id="user" th:field="${alluser}" multiple>
+                                    <option th:each="user : ${alluser}" th:value="${user.username}" th:text="${user.username}"></option>
+                                </select>
+
+                                <div id="selectedUsersContainer"></div>
+
+                                <script th:inline="javascript">
+                                    var selectElement = document.getElementById('user');
+                                    var selectedUsersContainer = document.getElementById('selectedUsersContainer');
+
+                                    selectElement.addEventListener('change', function() {
+                                        // Get all selected options
+                                        var options = selectElement.options;
+                                        var selectedOptions = Array.from(options)
+                                            .filter(function(option) {
+                                                return option.selected;
+                                            })
+                                            .map(function(option) {
+                                                return option.value;
+                                            });
+
+                                        // Display selected usernames
+                                        selectedUsersContainer.textContent = selectedOptions.join(', ');
+                                    });
+                                </script>
+                            </div>
+
+
+
+<!--                            <div>-->
+<!--                                <label for="user">Select User</label>-->
+<!--                                <select class="form-control" id="user" th:field="${alluser}">-->
+<!--                                    <option th:each="user : ${alluser}" th:value="${user.username}"-->
+<!--                                            th:text="${user.username}"></option>-->
+<!--                                </select>-->
+<!--                            </div>-->
+
+
+
+
+
                             <!--                            <span class="text-danger" th:errors="*{targetDate}"-->
                             <!--                                  th:if="${#fields.hasErrors('targetDate')}"></span>-->
                         </div>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
@@ -14,9 +14,21 @@
     <div class="card">
         <div class="card-body">
             <div class="container my-5">
-                <p class="my-5">
-                    <a class="btn btn-info" href="/addproject"><i class="fa fa-plus-square ml-2"> Add Project</i></a>
-                </p>
+<!--                <p class="my-5">-->
+<!--                    <a class="btn btn-info" href="/addproject"><i class="fa fa-plus-square ml-2"> Add Project</i></a>-->
+<!--                </p>-->
+<!--                <p class="my-5 -align-right">-->
+<!--                    <a class="btn btn-info" href="/logout"><i class="fa fa-plus-square ml-2"> Logout</i></a>-->
+<!--                </p>-->
+                <div class="button-container">
+                    <p class="my-5 float-left">
+                        <a class="btn btn-info" href="/addproject"><i class="fa fa-plus-square ml-2"></i> Add Project</a>
+                    </p>
+                    <p class="my-5 float-right">
+                        <a class="btn btn-danger" href="/logout"><i class="fa fa-window-close ml-2"></i> Logout</a>
+                    </p>
+                </div>
+
                 <div class="col-md-10">
                     <h4 th:if="${projectList.isEmpty()}">No Project found! Please add a Project.</h4>
                     <div th:if="${!projectList.isEmpty()}">

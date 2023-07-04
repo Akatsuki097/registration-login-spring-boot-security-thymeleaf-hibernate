@@ -57,6 +57,15 @@
                             </div>
                             <!--                            <span class="text-danger" th:errors="*{targetDate}"-->
                             <!--                                  th:if="${#fields.hasErrors('targetDate')}"></span>-->
+                            <div>
+                                <label for="alluser">Select User</label>
+                                <select class="form-control" id="alluser" th:field="*{alluser}">
+                                    <option th:each="user : ${alluser}" th:value="${user.username}"
+                                            th:text="${user.username}"></option>
+                                </select>
+                            </div>
+
+
                         </div>
 
 

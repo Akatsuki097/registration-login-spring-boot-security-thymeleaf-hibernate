@@ -53,7 +53,7 @@ public class User {
 					CascadeType.MERGE
 			})
 	@JoinTable(name = "projects_users",
-			joinColumns = { @JoinColumn(name = "user_id") },
+			joinColumns = { @JoinColumn(name = "id") },
 			inverseJoinColumns = { @JoinColumn(name = "project_id") })
 	private Set<Project> projects = new HashSet<>();
 	

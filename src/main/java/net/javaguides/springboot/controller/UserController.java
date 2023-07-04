@@ -25,6 +25,12 @@ public class UserController {
         return "login";
     }
 
+//    @PostMapping("/login")
+//    public String afterLogin() {
+//
+//        return "login";
+//    }
+
     @GetMapping("/registration")
     public String showRegistrationForm(Model model){
         User user = new User();
