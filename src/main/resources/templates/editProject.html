@@ -55,29 +55,40 @@
                             <div>
                                 <label for="user">Select User</label>
 
-                                <select class="form-control" id="user" th:field="${alluser}" multiple>
+                                <select class="form-control" id="user" th:field="${alluser}"  multiple>
                                     <option th:each="user : ${alluser}" th:value="${user.username}" th:text="${user.username}"></option>
                                 </select>
 
                                 <div id="selectedUsersContainer"></div>
 
-                                <script th:inline="javascript">
+                                <script th:inline="javascript" th:method="post">
                                     var selectElement = document.getElementById('user');
                                     var selectedUsersContainer = document.getElementById('selectedUsersContainer');
+                                    var selectedOptions = [];
 
                                     selectElement.addEventListener('change', function() {
+                                        // Reset selected options array
+                                        selectedOptions = [];
+
                                         // Get all selected options
                                         var options = selectElement.options;
-                                        var selectedOptions = Array.from(options)
-                                            .filter(function(option) {
-                                                return option.selected;
-                                            })
-                                            .map(function(option) {
-                                                return option.value;
-                                            });
+                                        for (var i = 0; i < options.length; i++) {
+                                            if (options[i].selected) {
+                                                // Add selected option to the array
+                                                selectedOptions.push(options[i].value);
+                                            }
+                                        }
+
+                                        // Limit the number of selected options to 5
+                                        if (selectedOptions.length > 5) {
+                                            // Deselect the last selected option
+                                            options[options.selectedIndex].selected = false;
+                                        }
 
                                         // Display selected usernames
                                         selectedUsersContainer.textContent = selectedOptions.join(', ');
+                                        //pass the selected user to the controller
+
                                     });
                                 </script>
                             </div>

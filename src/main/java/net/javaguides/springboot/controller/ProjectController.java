@@ -102,7 +102,7 @@ public class ProjectController {
 //            project.setUsers(dummy);
 
             projectService.updateProject(project);
-//            System.out.println("aaaaaaaaaaaaaa"+alluser);
+            System.out.println("aaaaaaaaaaaaaa"+alluser);
 
             return "redirect:/projects";
 
